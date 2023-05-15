@@ -52,6 +52,7 @@ test-suite hcat-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      FilePrinterSpec
       Paths_hcat
   hs-source-dirs:
       test
@@ -59,4 +60,6 @@ test-suite hcat-test
   build-depends:
       base >=4.7 && <5
     , hcat
+    , hspec
+    , temporary
   default-language: Haskell2010
