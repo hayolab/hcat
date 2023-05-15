@@ -1,5 +1,6 @@
 module Main (main) where
 
+import FilePrinter (printContent)
 import System.Environment (getArgs)
 
 main :: IO ()
@@ -8,8 +9,3 @@ main = do
   case args of
     [] -> putStrLn "No files provided"
     _ -> mapM_ printContent args
-
-printContent :: FilePath -> IO ()
-printContent path = do
-  content <- readFile path
-  putStr content
