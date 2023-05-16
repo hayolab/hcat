@@ -1,11 +1,12 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Main (main) where
 
-import FilePrinter (printContent)
-import System.Environment (getArgs)
+import FilePrinter
+import Options
+import Options.Applicative
 
 main :: IO ()
 main = do
-  args <- getArgs
-  case args of
-    [] -> putStrLn "No files provided"
-    _ -> mapM_ printContent args
+  opts <- execParser $ info (options <**> helper) fullDesc
+  mapM_ (printContent (optShowLineNumber opts)) (optInputFiles opts)
