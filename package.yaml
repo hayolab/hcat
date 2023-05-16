@@ -60,3 +60,4 @@ tests:
     - hcat
     - hspec
     - temporary
+    - process
