@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+
     - uses: ./.github/actions/setup-haskell-stack
+
     - name: Stack build
       run: stack build --system-ghc
