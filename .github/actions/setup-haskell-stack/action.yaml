@@ -1,16 +1,9 @@
-name: Build
+name: 'Setup Haskell Stack'
+description: 'Setup Haskell and cache dependencies'
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
+runs:
+  using: 'composite'
+  steps:
     - uses: actions/checkout@v2
 
     - name: Setup Haskell Stack
@@ -26,6 +19,3 @@ jobs:
         key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml') }}
         restore-keys: |
           ${{ runner.os }}-stack-
-
-    - name: Stack build
-      run: stack build --system-ghc
