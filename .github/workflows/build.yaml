@@ -11,21 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup Haskell Stack
-      uses: actions/setup-haskell@v1
-      with:
-        ghc-version: 'latest'
-        stack-version: 'latest'
-
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.stack
-        key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-stack-
-
+    - uses: ./.github/actions/setup-haskell-stack
     - name: Stack build
       run: stack build --system-ghc
